@@ -92,8 +92,8 @@ export default function Home() {
                 maxHeight="220px"
               >
                 <img
-                  src={article.cover_image}
-                  srcSet={article.cover_image}
+                  src={article.social_image}
+                  srcSet={article.social_image}
                   loading="lazy"
                   alt=""
                 />

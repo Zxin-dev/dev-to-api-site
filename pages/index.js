@@ -8,6 +8,7 @@ import Card from "@mui/joy/Card";
 import CardContent from "@mui/joy/CardContent";
 import CardActions from "@mui/joy/CardActions";
 import IconButton from "@mui/joy/IconButton";
+import { AspectRatio } from "@mui/joy";
 import Typography from "@mui/joy/Typography";
 import { useEffect, useState } from "react";
 import Head from "next/head";
@@ -23,7 +24,14 @@ export default function Home() {
   console.log(article);
 
   return (
-    <div style={{ backgroundColor: "white" }}>
+    <div
+      style={{
+        backgroundColor: "white",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+      }}
+    >
       <Head>
         <meta property="og:title" content="my awesome site" />
         <meta
@@ -50,9 +58,10 @@ export default function Home() {
           <Card
             variant="outlined"
             sx={{
-              width: 320,
+              width: 500,
               overflow: "auto",
               resize: "horizontal",
+              marginTop: "20px",
             }}
           >
             <Box
@@ -77,20 +86,24 @@ export default function Home() {
               </Typography>
 
               <Typography level="body2">{article.description}</Typography>
+              <AspectRatio
+                style={{ marginTop: 10 }}
+                minHeight="120px"
+                maxHeight="220px"
+              >
+                <img
+                  src={article.cover_image}
+                  srcSet={article.cover_image}
+                  loading="lazy"
+                  alt=""
+                />
+              </AspectRatio>
             </CardContent>
-            <CardActions buttonFlex="0 1 120px">
-              <IconButton
-                variant="outlined"
-                color="neutral"
-                sx={{ mr: "auto" }}
-              ></IconButton>
-              <Button variant="outlined" color="neutral">
-                View
-              </Button>
+            <CardActions buttonFlex="0 1 500px">
               <a href={`/${article.slug}`}>
                 {" "}
                 <Button variant="solid" color="primary">
-                  Join
+                  View
                 </Button>
               </a>
             </CardActions>
